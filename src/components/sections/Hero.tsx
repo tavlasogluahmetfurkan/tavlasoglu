@@ -21,12 +21,8 @@ export const Hero = () => {
         poster="/images/hero-poster.jpg"
         className="absolute inset-0 w-full h-full object-cover opacity-40"
       >
-        {/* WebM first for better compression when available */}
-        <source src="/videos/hero-bg.webm" type="video/webm" />
-        {/* MP4 H.264 fallback */}
-        <source src="/videos/hero-bg.mp4" type="video/mp4" />
-        {/* If optimized files are not present yet, fallback to the provided source */}
-        <source src="/videos/hero-src.mp4" type="video/mp4" />
+        {/* Use the new hero video */}
+        <source src="/videos/anasayfa.mp4" type="video/mp4" />
         {/* Browser fallback message */}
         Your browser does not support the background video.
       </video>
