@@ -18,6 +18,8 @@ export const Hero = () => {
         muted
         loop
         playsInline
+        preload="metadata"
+        src="/videos/anasayfa.mp4"
         poster="/images/hero-poster.jpg"
         className="absolute inset-0 w-full h-full object-cover opacity-40"
       >

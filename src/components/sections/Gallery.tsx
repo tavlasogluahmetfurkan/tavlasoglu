@@ -25,7 +25,7 @@ const galleryItems: GalleryItem[] = [
     fullImage:
       'https://images.unsplash.com/photo-1489515217757-5fd1be406fef?w=1200&h=800&fit=crop',
     type: 'video',
-    videoSrc: '/videos/portfoy.mp4',
+    videoSrc: '/videos/projevideo1.mp4',
   },
   {
     id: 1,
@@ -42,6 +42,7 @@ const galleryItems: GalleryItem[] = [
     thumbnail: 'https://images.unsplash.com/photo-1509347528160-f3446e1f2d0f?w=300&h=300&fit=crop',
     fullImage: 'https://images.unsplash.com/photo-1509347528160-f3446e1f2d0f?w=1200&h=800&fit=crop',
     type: 'video',
+    videoSrc: '/videos/projevideo2.mp4',
   },
   {
     id: 3,
@@ -66,6 +67,7 @@ const galleryItems: GalleryItem[] = [
     thumbnail: 'https://images.unsplash.com/photo-1552062407-291826ab63fd?w=300&h=300&fit=crop',
     fullImage: 'https://images.unsplash.com/photo-1552062407-291826ab63fd?w=1200&h=800&fit=crop',
     type: 'video',
+    videoSrc: '/videos/projevideo3.mp4',
   },
   {
     id: 6,
@@ -74,6 +76,7 @@ const galleryItems: GalleryItem[] = [
     thumbnail: 'https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=300&h=300&fit=crop',
     fullImage: 'https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=1200&h=800&fit=crop',
     type: 'video',
+    videoSrc: '/videos/projevideo4.mp4',
   },
 ];
 
@@ -93,13 +96,13 @@ export const Gallery = () => {
       {/* Background Video */}
       <video
         className="absolute inset-0 w-full h-full object-cover opacity-40"
-        src="/videos/portfoy.mp4"
+        src="/videos/projevideo1.mp4"
         autoPlay
         muted
         loop
         playsInline
         preload="metadata"
-        poster="/videos/portfoy.mp4"
+        poster="/videos/projevideo1.mp4"
       />
 
       {/* Dark overlay for readability */}
