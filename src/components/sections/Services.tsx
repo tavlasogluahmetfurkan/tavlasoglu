@@ -14,7 +14,7 @@ const services = [
     icon: Eye,
     title: 'Havadan Görüntüleme',
     description: 'Drone teknolojisini kullanarak perspektif farklı ve etkileyici çekimler.',
-    features: ['DJI Enterprise Drones', 'Real-time İzleme', 'Stabilize Kurgu'],
+    features: ['DJI mavic 4 Pro', 'Real-time İzleme', 'Stabilize Kurgu'],
   },
   {
     icon: Scissors,

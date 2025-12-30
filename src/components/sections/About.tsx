@@ -72,8 +72,8 @@ export const About = () => {
               variants={itemVariants}
               className="text-gray-300 text-lg leading-relaxed"
             >
-              Bireysel ve kurumsal projeler için; drone ile havadan, belgesel tarzında ya da klasik video ve fotoğraf çekimleri gerçekleştiriyorum. 
-              Markalara ve kişilere özel hikaye anlatımıyla, her çekimde özgün bir bakış açısı ve sinematik kalite sunuyorum.
+              Bireysel ve kurumsal projeler için; drone ile havadan, belgesel tarzında ya da klasik video ve fotoğraf çekimleri gerçekleştiriyoruz. 
+              Markalara ve kişilere özel hikaye anlatımıyla, her çekimde özgün bir bakış açısı ve sinematik kalite sunuyoruz.
             </motion.p>
 
             {/* Stats */}
