@@ -134,14 +134,7 @@ export const Services = () => {
                     ))}
                   </div>
 
-                  {/* CTA */}
-                  <motion.button
-                    className="mt-6 px-4 py-2 bg-gold/0 border border-gold text-gold rounded font-semibold text-sm hover:bg-gold hover:text-dark transition-all group-hover:border-gold"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                      {/* Detaylar butonu kaldırıldı */}
-                  </motion.button>
+                  {/* CTA butonu tamamen kaldırıldı */}
                 </div>
               </motion.div>
             );
