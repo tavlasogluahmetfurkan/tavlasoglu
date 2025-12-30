@@ -72,9 +72,8 @@ export const About = () => {
               variants={itemVariants}
               className="text-gray-300 text-lg leading-relaxed"
             >
-              15 yılın üzerinde profesyonel sinema ve drone operatörlüğü deneyimiyle, 
-              markalarınızın hikayesini etkili ve sinematik bir şekilde anlatıyorum. 
-              Her proje, benzersiz bir perspektif ve teknik mükemmellikle yapılır.
+              Bireysel ve kurumsal projeler için; drone ile havadan, belgesel tarzında ya da klasik video ve fotoğraf çekimleri gerçekleştiriyorum. 
+              Markalara ve kişilere özel hikaye anlatımıyla, her çekimde özgün bir bakış açısı ve sinematik kalite sunuyorum.
             </motion.p>
 
             {/* Stats */}
@@ -84,8 +83,8 @@ export const About = () => {
             >
               {[
                 { number: '100+', label: 'Proje' },
-                { number: '15+', label: 'Yıl Deneyim' },
-                { number: '50+', label: 'Ödül & Taklif' },
+                { number: '10+', label: 'Yıl Deneyim' },
+                { number: '5+', label: 'Ödül & Taklif' },
               ].map((stat) => (
                 <div key={stat.label} className="text-center">
                   <p className="text-2xl font-display font-bold text-gold">{stat.number}</p>
