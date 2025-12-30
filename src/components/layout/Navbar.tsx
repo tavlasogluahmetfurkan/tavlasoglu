@@ -41,7 +41,7 @@ export const Navbar = () => {
             className="text-2xl font-display font-bold text-gold"
             whileHover={{ scale: 1.05 }}
           >
-            TAVLAŞOĞLU
+            skisnowly
           </motion.div>
 
           {/* Desktop Menu */}
