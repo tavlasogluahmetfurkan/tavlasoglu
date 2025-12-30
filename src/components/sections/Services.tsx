@@ -140,7 +140,7 @@ export const Services = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    Detaylar
+                      {/* Detaylar butonu kaldırıldı */}
                   </motion.button>
                 </div>
               </motion.div>
