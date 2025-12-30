@@ -18,36 +18,36 @@ interface GalleryItem {
 const galleryItems: GalleryItem[] = [
   {
     id: 1,
-    title: 'Proje Video 1',
+    title: '',
     category: 'commercial',
-    thumbnail: '/videos/projevideo1.mp4',
+    thumbnail: '/videos/projevideo1.jpg',
     fullImage: '/videos/projevideo1.mp4',
     type: 'video',
     videoSrc: '/videos/projevideo1.mp4',
   },
   {
     id: 2,
-    title: 'Proje Video 2',
+    title: '',
     category: 'documentary',
-    thumbnail: '/videos/projevideo2.mp4',
+    thumbnail: '/videos/projevideo2.jpg',
     fullImage: '/videos/projevideo2.mp4',
     type: 'video',
     videoSrc: '/videos/projevideo2.mp4',
   },
   {
     id: 3,
-    title: 'Proje Video 3',
+    title: '',
     category: 'drone',
-    thumbnail: '/videos/projevideo3.mp4',
+    thumbnail: '/videos/projevideo3.jpg',
     fullImage: '/videos/projevideo3.mp4',
     type: 'video',
     videoSrc: '/videos/projevideo3.mp4',
   },
   {
     id: 4,
-    title: 'Proje Video 4',
+    title: '',
     category: 'commercial',
-    thumbnail: '/videos/projevideo4.mp4',
+    thumbnail: '/videos/projevideo4.jpg',
     fullImage: '/videos/projevideo4.mp4',
     type: 'video',
     videoSrc: '/videos/projevideo4.mp4',
@@ -135,16 +135,28 @@ export const Gallery = () => {
               viewport={{ once: true }}
               onClick={() => setSelectedItem(item)}
             >
-              {/* Image */}
-              <Image
-                src={item.thumbnail}
-                alt={item.title}
-                width={600}
-                height={400}
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                loading="lazy"
-              />
+              {/* Video Thumbnail */}
+              {item.type === 'video' ? (
+                <video
+                  src={item.videoSrc}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  preload="metadata"
+                  muted
+                  playsInline
+                  style={{ pointerEvents: 'none' }}
+                  poster={undefined}
+                />
+              ) : (
+                <Image
+                  src={item.thumbnail}
+                  alt={item.title}
+                  width={600}
+                  height={400}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  loading="lazy"
+                />
+              )}
 
               {/* Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-dark via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -227,6 +239,7 @@ export const Gallery = () => {
                     controls
                     preload="metadata"
                     poster={selectedItem.thumbnail}
+                    muted
                   >
                     <source
                       src={selectedItem.videoSrc || selectedItem.fullImage}
