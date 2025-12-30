@@ -5,9 +5,9 @@ import { Mail, MapPin, Phone, Instagram, Linkedin, Youtube } from 'lucide-react'
 
 export const Contact = () => {
   const socialLinks = [
-    { icon: Instagram, href: 'https://www.instagram.com/omerfaruktavlasoglu/', label: 'Instagram' },
+    { icon: Instagram, href: 'https://www.instagram.com/skisnowly/', label: 'Instagram' },
     { icon: Youtube, href: '#', label: 'YouTube' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/%C3%B6mer-faruk-tavla%C5%9Fo%C4%9Flu-b83731325/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app', label: 'LinkedIn' },
   ];
 
   const contactInfo = [

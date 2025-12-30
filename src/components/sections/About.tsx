@@ -5,9 +5,9 @@ import { Camera, Hexagon, Video } from 'lucide-react';
 
 export const About = () => {
   const equipment = [
-    { name: 'DJI Mavic 3', category: 'Drone' },
-    { name: 'RED Cinema Camera', category: 'Sinema Kamerası' },
-    { name: 'Sony A7S III', category: 'Photo/Video' },
+    { name: 'DJI mavic 4 Pro', category: 'Drone' },
+    { name: 'DJI Osmo pocket 3 ', category: 'Sinema Kamerası' },
+    { name: 'Canon 650D', category: 'Sinematik Kamera' },
     { name: 'GIMBAL Stabilizer', category: 'Video Stabilisasyon' },
   ];
 

@@ -17,7 +17,7 @@ export const Footer = () => {
         >
           {/* Logo & Copyright */}
           <div className="text-center md:text-left">
-            <p className="text-2xl font-display font-bold text-gold">OMER ABIM</p>
+            <p className="text-2xl font-display font-bold text-gold">SKİSNOWLY</p>
             <p className="text-gray-400 text-sm mt-1">
               © {currentYear} Tüm hakları saklıdır.
             </p>
