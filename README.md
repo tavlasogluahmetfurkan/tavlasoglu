@@ -1,157 +1,66 @@
-This is a [Next.js](https://nextjs.org) project - Omer Abim Professional Portfolio
+# Skisnowly — Drone & Belgesel Portföy Sitesi
 
-# 🎬 Omer Abim - Sinematik Portföy Web Sitesi
+Ömer Faruk Tavlaşoğlu'nun drone ve belgesel çekim portföyü. Canlı: https://tavlasoglu.vercel.app
 
-Profesyonel belgesel yapımcısı ve drone operatörü için modern, dark-themed, tamamen responsive portföy web sitesi.
+**Teknolojiler:** Next.js 16 (App Router, Turbopack, React Compiler) · React 19 · Tailwind CSS v4 · Motion · Lenis
 
-## ✨ Özellikler
-
-- 🎥 **Hero Section** - Tam ekran video arka planlı giriş
-- 🖼️ **Responsive Gallery** - Masonry layout + lightbox
-- ⚡ **Smooth Animations** - Framer Motion powered
-- 📱 **Fully Responsive** - Mobile-first design
-- 🎨 **Dark Theme** - Premium gold & dark color scheme
-- 📧 **Contact Form** - Working form with validation
-- 🔍 **SEO Optimized** - Meta tags + Open Graph
-
-## 🛠️ Teknoloji
-
-- **Next.js 14+** (App Router)
-- **Tailwind CSS 4** (Utility-first)
-- **Framer Motion** (Animations)
-- **TypeScript** (Type-safe)
-- **Lucide React** (Icons)
-- **Inter & Cinzel** (Google Fonts)
-
-## 🚀 Başlayın
+## Geliştirme
 
 ```bash
-# Kurulum
 npm install
-
-# Dev server
-npm run dev
-
-# Production build
-npm run build
-npm run start
+npm run dev        # http://localhost:3000
+npm run build      # production build
+npm run lint
+npm run type-check
 ```
 
-Browser: **http://localhost:3000**
-
-## 📁 Yapı
+## Yapı
 
 ```
 src/
-├── app/              # Pages & layout
-├── components/       # React components
-│   ├── layout/       # Navbar, Footer
-│   ├── sections/     # Hero, About, Gallery, Services, Contact
-│   └── ui/           # Button, Skeleton, SectionWrapper
-├── hooks/            # Custom hooks
-└── lib/              # Utils & helpers
+  app/                 layout (font, SEO, JSON-LD), sayfa, 404, sitemap, robots
+  content/site.ts      TÜM metinler, iletişim bilgileri, portföy listesi
+  components/
+    layout/            Navbar, Footer, SmoothScroll (Lenis)
+    sections/          Hero, Marquee, Work (portföy + oynatıcı), About, Services, Contact
+    ui/                BackgroundVideo, Reveal, BrandIcons
+  lib/                 hook'lar ve yardımcılar
+public/media/          web için optimize edilmiş videolar ve posterler
 ```
 
-## 🎨 Renk Paleti
+Metin, telefon, e-posta, sosyal medya veya video başlıklarını değiştirmek için sadece
+`src/content/site.ts` dosyasını düzenlemeniz yeterli.
 
-- **Dark**: `#0a0a0a`
-- **Gold**: `#d4af37`
-- **Gray**: `#e0e0e0`
+## Videolar
 
-## 📚 Daha Fazla Bilgi
+> ⚠️ **Videoları Git LFS ile eklemeyin.** Vercel LFS dosyalarını varsayılan olarak çekmez ve
+> sitede video yerine 134 byte'lık bir metin dosyası sunulur — eski sürümde videoların açılmamasının
+> sebebi buydu. `.gitattributes` bu yüzden LFS kullanmıyor.
 
-- [📖 Detaylı Dokümantasyon](./DOCUMENTATION.md)
-- [🚀 Deployment Guide](./DEPLOYMENT.md)
-- [🔧 Kustomizasyon](./DOCUMENTATION.md#-kustomizasyon-rehberi)
-
-## 📋 Available Scripts
+Kameradan çıkan 4K dosyalar (yüzlerce MB) web için çok büyük. Yeni bir portföy videosu eklerken
+[ffmpeg](https://ffmpeg.org) ile üç dosya üretin (örnek: dikey bir video, `work-07`):
 
 ```bash
-npm run dev          # Dev server (http://localhost:3000)
-npm run build        # Production build
-npm run start        # Start production server
-npm run lint         # Run ESLint
-npm run type-check   # TypeScript check
-npm run format       # Format code
+# 1) Tam sürüm (oynatıcıda açılır) — yatay video için scale=1920:-2 kullanın
+ffmpeg -i kaynak.mp4 -vf "scale=-2:1920:flags=lanczos" -c:v libx264 -preset slow -crf 24 \
+  -maxrate 5M -bufsize 10M -pix_fmt yuv420p -r 30 -an -movflags +faststart public/media/work-07.mp4
+
+# 2) Kart önizlemesi (6 sn, sessiz döngü) — yatay için scale=960:-2
+ffmpeg -ss 2 -t 6 -i kaynak.mp4 -vf "scale=-2:960:flags=lanczos" -c:v libx264 -preset slow -crf 28 \
+  -maxrate 1500k -bufsize 3M -pix_fmt yuv420p -r 30 -an -movflags +faststart public/media/work-07-preview.mp4
+
+# 3) Poster görseli
+ffmpeg -ss 1.5 -i kaynak.mp4 -frames:v 1 -vf "scale=-2:1280" -q:v 3 public/media/work-07.jpg
 ```
 
-## 🌐 Deployment
+Sonra `src/content/site.ts` içindeki `works` listesine ekleyin:
 
-### Vercel (Recommended)
-```bash
-vercel
+```ts
+work(7, 'Başlık', 'Kısa açıklama', 'portrait'),
 ```
 
-### Docker
-```bash
-docker build -t omerabim .
-docker run -p 3000:3000 omerabim
-```
+Dosya başına ~30 MB'ı geçmemeye çalışın (GitHub 50 MB'ta uyarır, 100 MB'ta reddeder).
 
-### Self-Hosted
-```bash
-npm run build
-npm run start
-```
+## Yayınlama
 
-Detaylı deployment rehberi için [DEPLOYMENT.md](./DEPLOYMENT.md) dosyasını inceleyin.
-
-## 🔐 Güvenlik
-
-- ✅ Security headers configured
-- ✅ Content Security Policy
-- ✅ CSRF protection ready
-- ✅ No vulnerabilities (npm audit)
-
-## 📊 Performance
-
-- ✅ Lighthouse Score: 95+
-- ✅ Fast build time (~5s)
-- ✅ Image optimization
-- ✅ Code splitting
-- ✅ Lazy loading
-
-## 🤝 Katkıda Bulunun
-
-Hata bulduysanız veya iyileştirme öneriniz varsa lütfen issue açınız.
-
-## 📄 Lisans
-
-MIT License - Kişisel ve ticari kullanıma açıktır.
-
----
-
-**Tasarım & Geliştirme:** GitHub Copilot  
-**Versiyon:** 1.0.0  
-**Son Güncelleme:** 17 Aralık 2025
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+`main` dalına her push'ta Vercel otomatik olarak yayınlar.

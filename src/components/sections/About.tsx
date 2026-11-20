@@ -1,129 +1,71 @@
-'use client';
+import { BackgroundVideo } from '@/components/ui/BackgroundVideo';
+import { Reveal } from '@/components/ui/Reveal';
+import { equipment, stats } from '@/content/site';
 
-import { motion } from 'framer-motion';
-import { Camera, Hexagon, Video } from 'lucide-react';
-
-export const About = () => {
-  const equipment = [
-    { name: 'DJI mavic 4 Pro', category: 'Drone' },
-    { name: 'DJI Osmo pocket 3 ', category: 'Sinema Kamerası' },
-    { name: 'Canon 650D', category: 'Sinematik Kamera' },
-    { name: 'GIMBAL Stabilizer', category: 'Video Stabilisasyon' },
-  ];
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8 },
-    },
-  };
-
+export function About() {
   return (
-    <section id="about" className="relative py-20 md:py-28 bg-black section-snap overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-2 rounded-2xl overflow-hidden shadow-[0_20px_70px_-40px_rgba(0,0,0,0.75)] border border-gold/10">
-          {/* Left: background visual with right-fading gradient */}
-          <div className="relative h-80 md:h-full min-h-[320px]">
-            <video
-              key="hakkimizda-video-v4"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              className="absolute inset-0 w-full h-full object-cover"
-            >
-              {/* cache-bust query to ensure latest upload is loaded */}
-              <source src="/videos/hakkimizda.mp4?v=4" type="video/mp4" />
-              Tarayıcınız video etiketini desteklemiyor.
-            </video>
-            <div className="absolute inset-0 bg-gradient-to-r from-black/5 via-black/60 to-black" />
+    <section id="hakkimda" className="relative py-24 md:py-36">
+      <div className="mx-auto grid max-w-[1400px] gap-12 px-5 sm:px-8 lg:grid-cols-12 lg:gap-16">
+        <Reveal className="lg:col-span-5">
+          <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-line bg-black lg:sticky lg:top-28">
+            <BackgroundVideo landscape={{ src: '/media/about.mp4', poster: '/media/about.jpg' }} />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgb(0_0_0/0.6))]" />
+            <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-6">
+              <p className="eyebrow">Ekipman</p>
+              <p className="font-display text-2xl text-snow">DJI Mavic 4 Pro</p>
+            </div>
           </div>
+        </Reveal>
 
-          {/* Right: content on solid dark surface */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="relative bg-black/95 backdrop-blur-sm px-6 sm:px-8 md:px-10 py-10 space-y-8"
-          >
-            <motion.div variants={itemVariants}>
-              <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-4">
-                Hakkımda
-              </h2>
-              <div className="w-12 h-1 bg-gradient-gold rounded-full" />
-            </motion.div>
+        <div className="lg:col-span-7 lg:pt-6">
+          <Reveal>
+            <p className="eyebrow mb-5">Hakkımda</p>
+            <h2 className="font-display text-5xl leading-[1] text-snow md:text-7xl">
+              Her karede <em className="text-gold-soft">özgün</em> bir bakış açısı.
+            </h2>
+          </Reveal>
 
-            <motion.p
-              variants={itemVariants}
-              className="text-gray-300 text-lg leading-relaxed"
-            >
-              Bireysel ve kurumsal projeler için; drone ile havadan, belgesel tarzında ya da klasik video ve fotoğraf çekimleri gerçekleştiriyoruz. 
-              Markalara ve kişilere özel hikaye anlatımıyla, her çekimde özgün bir bakış açısı ve sinematik kalite sunuyoruz.
-            </motion.p>
+          <Reveal delay={0.1}>
+            <div className="mt-8 max-w-2xl space-y-5 text-lg leading-relaxed text-snow/70">
+              <p>
+                Bireysel ve kurumsal projeler için drone ile havadan, belgesel tarzında ya da klasik video ve fotoğraf
+                çekimleri gerçekleştiriyorum.
+              </p>
+              <p>
+                Markalara ve kişilere özel hikâye anlatımıyla, her çekimde özgün bir bakış açısı ve sinematik kalite
+                sunuyorum.
+              </p>
+            </div>
+          </Reveal>
 
-            {/* Stats */}
-            <motion.div
-              variants={itemVariants}
-              className="grid grid-cols-3 gap-4 py-6"
-            >
-              {[
-                { number: '100+', label: 'Proje' },
-                { number: '10+', label: 'Yıl Deneyim' },
-                { number: '5+', label: 'Ödül & Taklif' },
-              ].map((stat) => (
-                <div key={stat.label} className="text-center">
-                  <p className="text-2xl font-display font-bold text-gold">{stat.number}</p>
-                  <p className="text-gray-400 text-sm mt-1">{stat.label}</p>
+          <Reveal delay={0.15}>
+            <dl className="mt-12 grid grid-cols-3 border-y border-line">
+              {stats.map((s, i) => (
+                <div key={s.label} className={i > 0 ? 'border-l border-line py-6 pl-5 md:pl-8' : 'py-6'}>
+                  <dt className="sr-only">{s.label}</dt>
+                  <dd className="font-display text-4xl text-snow md:text-6xl">{s.value}</dd>
+                  <dd className="mt-1 text-xs uppercase tracking-[0.18em] text-mist">{s.label}</dd>
                 </div>
               ))}
-            </motion.div>
+            </dl>
+          </Reveal>
 
-            {/* Equipment Grid */}
-            <motion.div variants={itemVariants}>
-              <h3 className="text-2xl font-display font-semibold text-white mb-4">
-                Kullanılan Ekipman
-              </h3>
-              <div className="grid grid-cols-2 gap-4">
-                {equipment.map((item, index) => (
-                  <motion.div
-                    key={item.name}
-                    className="p-4 bg-dark-secondary rounded-lg border border-gold/20 hover:border-gold transition-colors group cursor-pointer"
-                    whileHover={{ y: -5 }}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    <div className="text-gold mb-2 group-hover:scale-110 transition-transform">
-                      {index === 0 && <Camera className="w-5 h-5" />}
-                      {index === 1 && <Video className="w-5 h-5" />}
-                      {index === 2 && <Hexagon className="w-5 h-5" />}
-                      {index === 3 && <Camera className="w-5 h-5" />}
-                    </div>
-                    <p className="text-white font-semibold text-sm">{item.name}</p>
-                    <p className="text-gray-400 text-xs">{item.category}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          </motion.div>
+          <Reveal delay={0.2}>
+            <h3 className="eyebrow mb-4 mt-14">Kullandığım ekipman</h3>
+            <ul className="divide-y divide-line border-b border-line">
+              {equipment.map((item) => (
+                <li
+                  key={item.name}
+                  className="group flex items-baseline justify-between gap-4 py-4 transition-[padding] duration-500 hover:pl-2"
+                >
+                  <span className="font-display text-2xl text-snow md:text-3xl">{item.name}</span>
+                  <span className="text-sm text-mist transition-colors group-hover:text-gold">{item.category}</span>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
         </div>
       </div>
     </section>
   );
-};
+}
