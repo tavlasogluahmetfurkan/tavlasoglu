@@ -9,7 +9,7 @@ export const site = {
   role: 'Drone & Belgesel Çekim',
   location: 'Erzurum, Türkiye',
   url: 'https://tavlasoglu.vercel.app',
-  title: 'Skisnowly — Ömer Faruk Tavlaşoğlu | Drone & Belgesel Çekim',
+  title: 'Skisnowly',
   description:
     'Erzurum merkezli drone ve belgesel çekimleri. Havadan sinematik görüntüler, belgesel tarzı anlatım, kurgu ve renk düzenleme.',
   keywords: ['drone çekimi', 'belgesel', 'erzurum', 'havadan çekim', 'video kurgu', 'sinematik video', 'skisnowly'],
