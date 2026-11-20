@@ -1,6 +1,6 @@
 # Skisnowly — Drone & Belgesel Portföy Sitesi
 
-Ömer Faruk Tavlaşoğlu'nun drone ve belgesel çekim portföyü. Canlı: https://tavlasoglu.vercel.app
+Ömer Faruk Tavlaşoğlu'nun drone ve belgesel çekim portföyü. Canlı: https://www.snowly.com.tr
 
 **Teknolojiler:** Next.js 16 (App Router, Turbopack, React Compiler) · React 19 · Tailwind CSS v4 · Motion · Lenis
 
